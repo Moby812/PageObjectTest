@@ -15,6 +15,7 @@ public class SignUpPage {
     private By reCaptcha = By.xpath("//div[@class='recaptcha-checkbox-border']");
     private By sCheckbox = By.xpath("//input[@id='opt-in']");
     private By submit = By.xpath("//button[@id='submit-button']");
+    private By regMessage = By.xpath("//*[text()='Регистрация']");
 
     public SignUpPage sendLogin(String text){
         driver.findElement(login).sendKeys(text);
@@ -41,18 +42,22 @@ public class SignUpPage {
         return this;
     }
 
-    public SignUpPage clickSubmit(){
+    public MainPage clickSubmit(){
         driver.findElement(submit).click();
-        return this;
+        return new MainPage(driver);
     }
 
-    public SignUpPage register(String login, String email, String password){
+    public MainPage register(String login, String email, String password){
         this.sendLogin(login);
         this.sendEmail(email);
         this.sendPassword(password);
         this.pressCaptcha();
         this.pressCheckbox();
         this.clickSubmit();
-        return new SignUpPage(driver);
+        return new MainPage(driver);
+    }
+
+    public String getRegText(){
+        return driver.findElement(regMessage).getText();
     }
 }

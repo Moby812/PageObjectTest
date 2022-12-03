@@ -18,6 +18,11 @@ public class LoginPage {
     private By email = By.xpath("//input[@id='email']");
     private By password = By.xpath("//input[@id='password']");
     private By buttonSubmit = By.xpath("//button[@id='submit-button']");
+    private By errorMessage = By.xpath("//p[@class='flex--item s-input-message js-error-message ']");
+    private By nullEmail = By.xpath("//p[contains(text(),'Поле ввода почты не может быть пустым.')]");
+    private By nullPassword = By.xpath("//p[contains(text(),'Поле ввода пароля не может быть пустым.')]");
+    private By loginMessage = By.xpath("//*[text()='Войти']");
+    private By reg = By.xpath("//a[contains(text(),'Зарегистрируйтесь')]");
 
     public LoginPage sendEmail(String text){
         driver.findElement(email).sendKeys(text);
@@ -34,11 +39,39 @@ public class LoginPage {
         return new MainPage(driver);
     }
 
+    public SignUpPage clickReg(){
+        driver.findElement(reg).click();
+        return new SignUpPage(driver);
+    }
+
+    public LoginPage wrongLogin(String email, String password){
+        this.sendEmail(email);
+        this.sendPassword(password);
+        this.clickSubmit();
+        return new LoginPage(driver);
+    }
+
     public MainPage login(String email, String password){
         this.sendEmail(email);
         this.sendPassword(password);
         this.clickSubmit();
         return new MainPage(driver);
+    }
+
+    public String getLoginText(){
+        return driver.findElement(loginMessage).getText();
+    }
+
+    public String getErrorEmailText(){
+        return driver.findElement(nullEmail).getText();
+    }
+
+    public String getErrorPasswordText(){
+        return driver.findElement(nullPassword).getText();
+    }
+
+    public String getErrorLoginPasswordText(){
+        return driver.findElement(errorMessage).getText();
     }
 
 }
