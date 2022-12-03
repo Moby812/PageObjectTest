@@ -1,3 +1,4 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class SignUpPage {
@@ -6,5 +7,52 @@ public class SignUpPage {
 
     public SignUpPage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    private By login = By.xpath("//input[@id='display-name']");
+    private By email = By.xpath("//input[@id='email']");
+    private By password = By.xpath("//input[@id='password']");
+    private By reCaptcha = By.xpath("//div[@class='recaptcha-checkbox-border']");
+    private By sCheckbox = By.xpath("//input[@id='opt-in']");
+    private By submit = By.xpath("//button[@id='submit-button']");
+
+    public SignUpPage sendLogin(String text){
+        driver.findElement(login).sendKeys(text);
+        return this;
+    }
+
+    public SignUpPage sendEmail(String text){
+        driver.findElement(email).sendKeys(text);
+        return this;
+    }
+
+    public SignUpPage sendPassword(String text){
+        driver.findElement(password).sendKeys(text);
+        return this;
+    }
+
+    public SignUpPage pressCaptcha(){
+        driver.findElement(reCaptcha).isSelected();
+        return this;
+    }
+
+    public SignUpPage pressCheckbox(){
+        driver.findElement(sCheckbox).isSelected();
+        return this;
+    }
+
+    public SignUpPage clickSubmit(){
+        driver.findElement(submit).click();
+        return this;
+    }
+
+    public SignUpPage register(String login, String email, String password){
+        this.sendLogin(login);
+        this.sendEmail(email);
+        this.sendPassword(password);
+        this.pressCaptcha();
+        this.pressCheckbox();
+        this.clickSubmit();
+        return new SignUpPage(driver);
     }
 }

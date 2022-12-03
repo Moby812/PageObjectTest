@@ -19,4 +19,26 @@ public class LoginPage {
     private By password = By.xpath("//input[@id='password']");
     private By buttonSubmit = By.xpath("//button[@id='submit-button']");
 
+    public LoginPage sendEmail(String text){
+        driver.findElement(email).sendKeys(text);
+        return this;
+    }
+
+    public LoginPage sendPassword(String text){
+        driver.findElement(password).sendKeys(text);
+        return this;
+    }
+
+    public MainPage clickSubmit(){
+        driver.findElement(buttonSubmit).click();
+        return new MainPage(driver);
+    }
+
+    public MainPage login(String email, String password){
+        this.sendEmail(email);
+        this.sendPassword(password);
+        this.clickSubmit();
+        return new MainPage(driver);
+    }
+
 }

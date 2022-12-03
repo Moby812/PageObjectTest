@@ -38,17 +38,18 @@ public class MainPage {
         return new QuestionsAskPage(driver);
     }
 
-    public void sendTextSearch(String text){
+    public MainPage sendTextSearch(String text){
         WebElement send = driver.findElement(search);
         send.sendKeys(text);
         send.sendKeys(Keys.ENTER);
+        return this;
     }
 
-    public void clickNavigation(String text){
+    public MainPage clickNavigation(String text){
         driver.findElement(navigationLinks)
                 .findElement(By.xpath("//*[text()='" + text + "']"))
                 .click();
+        return this;
     }
-
 
 }
