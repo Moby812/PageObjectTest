@@ -16,7 +16,15 @@ public class MainPage {
     private By buttonSignUp = By.xpath("//a[contains(text(),'Регистрация') and @role='menuitem']");
     private By buttonJoin = By.xpath("//a[@class='s-btn s-btn__primary']");
     private By buttonAsk = By.xpath("//a[@class='ws-nowrap s-btn s-btn__primary']");
-    private By navigationLinks = By.xpath("(//ol[contains(@class,'nav-links')])[2]");
+    private By navigationLinks = By.xpath("//ol[contains(@class,'nav-links')]");
+    private By acceptCookies = By.xpath("//button[contains(@class,'js-accept-cookies')]");
+
+
+    public MainPage clickAcceptCookies(){
+        driver.findElement(acceptCookies).click();
+        System.out.println("Кукки были приняты");
+        return this;
+    }
 
     public LoginPage clickLogin(){
         driver.findElement(buttonLogin).click();
@@ -45,11 +53,9 @@ public class MainPage {
         return this;
     }
 
-    public MainPage clickNavigation(String text){
-        driver.findElement(navigationLinks)
-                .findElement(By.xpath("//*[text()='" + text + "']"))
-                .click();
+    public MainPage clickNavigationMenu(String text) {
+        String dirMenu = navigationLinks.toString().replace("By.xpath: ","")+"//*[contains(text(),'" + text + "')]";
+        driver.findElement(By.xpath(dirMenu)).click();
         return this;
     }
-
 }

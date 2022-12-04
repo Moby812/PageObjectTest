@@ -13,6 +13,7 @@ public class SignUpPage {
     private By email = By.xpath("//input[@id='email']");
     private By password = By.xpath("//input[@id='password']");
     private By reCaptcha = By.xpath("//div[@class='recaptcha-checkbox-border']");
+    private By errorReCaptcha = By.xpath("//p[@class='s-input-message m0 p0 js-error-message']");
     private By sCheckbox = By.xpath("//input[@id='opt-in']");
     private By submit = By.xpath("//button[@id='submit-button']");
     private By regMessage = By.xpath("//*[text()='Регистрация']");
@@ -59,5 +60,9 @@ public class SignUpPage {
 
     public String getRegText(){
         return driver.findElement(regMessage).getText();
+    }
+
+    public String getErrorReCaptchaText(){
+        return driver.findElement(errorReCaptcha).getText();
     }
 }

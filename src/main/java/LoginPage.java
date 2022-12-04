@@ -19,10 +19,18 @@ public class LoginPage {
     private By password = By.xpath("//input[@id='password']");
     private By buttonSubmit = By.xpath("//button[@id='submit-button']");
     private By errorMessage = By.xpath("//p[@class='flex--item s-input-message js-error-message ']");
-    private By nullEmail = By.xpath("//p[contains(text(),'Поле ввода почты не может быть пустым.')]");
-    private By nullPassword = By.xpath("//p[contains(text(),'Поле ввода пароля не может быть пустым.')]");
+    private By nullEmail = By.xpath("//input[@id='email']/../following-sibling::p[contains(@class,'error-message')]");
+    private By nullPassword = By.xpath("//input[@id='password']/../preceding-sibling::p[contains(@class,'error-message')]");
     private By loginMessage = By.xpath("//*[text()='Войти']");
     private By reg = By.xpath("//a[contains(text(),'Зарегистрируйтесь')]");
+    private By forgotPass = By.xpath("//a[@href='/users/account-recovery']");
+    private By acceptCookies = By.xpath("//button[contains(@class,'js-accept-cookies')]");
+
+
+    public LoginPage clickAcceptCookies(){
+        driver.findElement(acceptCookies).click();
+        return this;
+    }
 
     public LoginPage sendEmail(String text){
         driver.findElement(email).sendKeys(text);
