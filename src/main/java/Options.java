@@ -12,7 +12,7 @@ public class Options {
     public static WebDriver createChromeDriver(){
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-//        driver.manage().window().minimize();
+        driver.manage().window().maximize();
         return driver;
     }
 

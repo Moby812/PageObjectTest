@@ -19,6 +19,15 @@ public class MainPage {
     private By navigationLinks = By.xpath("//ol[contains(@class,'nav-links')]");
     private By acceptCookies = By.xpath("//button[contains(@class,'js-accept-cookies')]");
 
+    public MainPage searchLogo(){
+        driver.findElements(logo);
+        return this;
+    }
+
+    public MainPage searchNavigationMenu(){
+        driver.findElements(navigationLinks);
+        return this;
+    }
 
     public MainPage clickAcceptCookies(){
         driver.findElement(acceptCookies).click();
