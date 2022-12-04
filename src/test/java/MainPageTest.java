@@ -14,7 +14,7 @@ public class MainPageTest {
     }
 
     @Test
-    @DisplayName("Сайт открылся, элементы доступны")
+    @DisplayName("Загрузка главной страницы")
     public void openSite() {
 
         Assertions.assertNotNull(mainPage.searchLogo());
@@ -22,10 +22,27 @@ public class MainPageTest {
     }
 
     @Test
-    @DisplayName("Выполнен переход на форму входа")
+    @DisplayName("Переход на форму входа, кнопкой 'войти'")
     public void singIn(){
+        LoginPage loginPage = mainPage.clickLogin();
+        String textButton = loginPage.getLoginText();
+        Assertions.assertEquals("Войти",textButton);
+    }
 
+    @Test
+    @DisplayName("Переход на форму регистрации, кнопкой 'Регистрация'")
+    public void singUp(){
+        SignUpPage signUpPage = mainPage.clickSignUp();
+        String textButton = signUpPage.getRegText();
+        Assertions.assertEquals("Регистрация",textButton);
+    }
 
+    @Test
+    @DisplayName("Переход на форму регистрации, кнопкой 'Присоединиться к сообществу'")
+    public void singUpJoin(){
+        SignUpPage signUpPage = mainPage.clickJoin();
+        String textButton = signUpPage.getRegText();
+        Assertions.assertEquals("Регистрация",textButton);
     }
 
     @AfterEach
