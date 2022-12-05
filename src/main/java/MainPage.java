@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class MainPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public MainPage(WebDriver driver){
         this.driver = driver;
@@ -18,9 +18,9 @@ public class MainPage {
     private final By buttonAsk = By.xpath("//a[@class='ws-nowrap s-btn s-btn__primary']");
     private final By navigationLinks = By.xpath("//ol[contains(@class,'nav-links')]");
 
-    public void acceptCookies(){
-        CookiesModule cookies = new CookiesModule(driver);
-        cookies.clickAcceptCookies();
+    public CookiesModule cookies(){
+        new CookiesModule(driver);
+        return new CookiesModule(driver);
     }
 
     public MainPage searchLogo(){

@@ -2,7 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CookiesModule {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public CookiesModule(WebDriver driver){
         this.driver = driver;
