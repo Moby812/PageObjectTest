@@ -7,16 +7,12 @@ import Module.*;
 public class LoginPage {
 
     WebDriver driver;
-    EmailModule email;
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    private final By password = By.xpath("//input[@id='password']");
     private final By buttonSubmit = By.xpath("//button[@id='submit-button']");
     private final By errorMessage = By.xpath("//p[@class='flex--item s-input-message js-error-message ']");
-    private final By nullEmail = By.xpath("//input[@id='email']/../following-sibling::p[contains(@class,'error-message')]");
-    private final By nullPassword = By.xpath("//input[@id='password']/../preceding-sibling::p[contains(@class,'error-message')]");
     private final By loginMessage = By.xpath("//*[text()='Войти']");
     private final By reg = By.xpath("//a[contains(text(),'Зарегистрируйтесь')]");
     private final By forgotPass = By.xpath("//a[@href='/users/account-recovery']");
@@ -31,8 +27,14 @@ public class LoginPage {
         return new CookiesModule(driver);
     }
 
-    public void sendPassword(String text){
-        driver.findElement(password).sendKeys(text);
+    public EmailModule email(){
+        new EmailModule(driver);
+        return new EmailModule(driver);
+    }
+
+    public PasswordModule pass(){
+        new PasswordModule(driver);
+        return new PasswordModule(driver);
     }
 
     public void clickSubmit(){
@@ -47,28 +49,20 @@ public class LoginPage {
 
     public LoginPage wrongLogin(String email, String password){
         new EmailModule(driver).sendEmail(email);
-        this.sendPassword(password);
+        new PasswordModule(driver).sendPass(password);
         this.clickSubmit();
         return new LoginPage(driver);
     }
 
     public MainPage login(String email, String password){
         new EmailModule(driver).sendEmail(email);
-        this.sendPassword(password);
+        new PasswordModule(driver).sendPass(password);
         this.clickSubmit();
         return new MainPage(driver);
     }
 
     public String getLoginText(){
         return driver.findElement(loginMessage).getText();
-    }
-
-    public String getErrorEmailText(){
-        return driver.findElement(nullEmail).getText();
-    }
-
-    public String getErrorPasswordText(){
-        return driver.findElement(nullPassword).getText();
     }
 
     public String getErrorLoginPasswordText(){
