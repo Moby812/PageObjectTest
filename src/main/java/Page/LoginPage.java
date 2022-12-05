@@ -1,14 +1,17 @@
+package Page;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import Module.*;
 
 public class LoginPage {
 
     WebDriver driver;
+    EmailModule email;
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    private final By email = By.xpath("//input[@id='email']");
     private final By password = By.xpath("//input[@id='password']");
     private final By buttonSubmit = By.xpath("//button[@id='submit-button']");
     private final By errorMessage = By.xpath("//p[@class='flex--item s-input-message js-error-message ']");
@@ -28,10 +31,6 @@ public class LoginPage {
         return new CookiesModule(driver);
     }
 
-    public void sendEmail(String text){
-        driver.findElement(email).sendKeys(text);
-    }
-
     public void sendPassword(String text){
         driver.findElement(password).sendKeys(text);
     }
@@ -47,14 +46,14 @@ public class LoginPage {
     }
 
     public LoginPage wrongLogin(String email, String password){
-        this.sendEmail(email);
+        new EmailModule(driver).sendEmail(email);
         this.sendPassword(password);
         this.clickSubmit();
         return new LoginPage(driver);
     }
 
     public MainPage login(String email, String password){
-        this.sendEmail(email);
+        new EmailModule(driver).sendEmail(email);
         this.sendPassword(password);
         this.clickSubmit();
         return new MainPage(driver);
