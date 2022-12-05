@@ -12,7 +12,6 @@ public class LoginPage {
     }
 
     private final By buttonSubmit = By.xpath("//button[@id='submit-button']");
-    private final By errorMessage = By.xpath("//p[@class='flex--item s-input-message js-error-message ']");
     private final By loginMessage = By.xpath("//*[text()='Войти']");
     private final By reg = By.xpath("//a[contains(text(),'Зарегистрируйтесь')]");
     private final By forgotPass = By.xpath("//a[@href='/users/account-recovery']");
@@ -63,10 +62,6 @@ public class LoginPage {
 
     public String getLoginText(){
         return driver.findElement(loginMessage).getText();
-    }
-
-    public String getErrorLoginPasswordText(){
-        return driver.findElement(errorMessage).getText();
     }
 
     public String getForgotPasswordText(){

@@ -29,12 +29,20 @@ public class LoginPageTest {
         Assertions.assertEquals("Забыли пароль?",loginPage.getForgotPasswordText());
         Assertions.assertEquals("Войти",loginPage.getLoginText());
     }
+
     @Test
     @DisplayName("'Войти' без заполнения полей")
     public void openSiteEmptyField() {
         loginPage.clickSubmit();
         Assertions.assertEquals("Поле ввода почты не может быть пустым.",loginPage.email().getErrorEmailText());
         Assertions.assertEquals("Поле ввода пароля не может быть пустым.",loginPage.pass().getErrorPasswordText());
+    }
+
+    @Test
+    @DisplayName("'Войти' при неправильном формате почты")
+    public void openSiteWrongField() {
+        loginPage.wrongLogin("88005553535","2931");
+        Assertions.assertEquals("Указанный адрес не является действительным адресом электронной почты.",loginPage.email().getErrorEmailPasswordText());
     }
 
     @AfterEach
