@@ -9,22 +9,22 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    private By google = By.xpath("//button[@data-provider='google']");
-    private By github = By.xpath("//button[@data-provider='github']");
-    private By facebook = By.xpath("//button[@data-provider='facebook']");
-    private By vk = By.xpath("//button[@data-provider='vk']");
-    private By yandex = By.xpath("//button[@data-provider='yandex']");
+    private final By google = By.xpath("//button[@data-provider='google']");
+    private final By github = By.xpath("//button[@data-provider='github']");
+    private final By facebook = By.xpath("//button[@data-provider='facebook']");
+    private final By vk = By.xpath("//button[@data-provider='vk']");
+    private final By yandex = By.xpath("//button[@data-provider='yandex']");
 
-    private By email = By.xpath("//input[@id='email']");
-    private By password = By.xpath("//input[@id='password']");
-    private By buttonSubmit = By.xpath("//button[@id='submit-button']");
-    private By errorMessage = By.xpath("//p[@class='flex--item s-input-message js-error-message ']");
-    private By nullEmail = By.xpath("//input[@id='email']/../following-sibling::p[contains(@class,'error-message')]");
-    private By nullPassword = By.xpath("//input[@id='password']/../preceding-sibling::p[contains(@class,'error-message')]");
-    private By loginMessage = By.xpath("//*[text()='Войти']");
-    private By reg = By.xpath("//a[contains(text(),'Зарегистрируйтесь')]");
-    private By forgotPass = By.xpath("//a[@href='/users/account-recovery']");
-    private By acceptCookies = By.xpath("//button[contains(@class,'js-accept-cookies')]");
+    private final By email = By.xpath("//input[@id='email']");
+    private final By password = By.xpath("//input[@id='password']");
+    private final By buttonSubmit = By.xpath("//button[@id='submit-button']");
+    private final By errorMessage = By.xpath("//p[@class='flex--item s-input-message js-error-message ']");
+    private final By nullEmail = By.xpath("//input[@id='email']/../following-sibling::p[contains(@class,'error-message')]");
+    private final By nullPassword = By.xpath("//input[@id='password']/../preceding-sibling::p[contains(@class,'error-message')]");
+    private final By loginMessage = By.xpath("//*[text()='Войти']");
+    private final By reg = By.xpath("//a[contains(text(),'Зарегистрируйтесь')]");
+    private final By forgotPass = By.xpath("//a[@href='/users/account-recovery']");
+    private final By acceptCookies = By.xpath("//button[contains(@class,'js-accept-cookies')]");
 
 
     public LoginPage clickAcceptCookies(){

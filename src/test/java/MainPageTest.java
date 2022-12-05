@@ -11,6 +11,7 @@ public class MainPageTest {
         driver = Options.createChromeDriver();
         driver.get("https://ru.stackoverflow.com/");
         mainPage = new MainPage(driver);
+        mainPage.acceptCookies();
     }
 
     @Test

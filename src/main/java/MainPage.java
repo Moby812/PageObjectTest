@@ -10,14 +10,18 @@ public class MainPage {
         this.driver = driver;
     }
 
-    private By logo = By.xpath("//span[@class='-img _glyph']");
-    private By search = By.xpath("//input[@placeholder='Поиск...']");
-    private By buttonLogin = By.xpath("//a[contains(text(),'Войти') and @role='menuitem']");
-    private By buttonSignUp = By.xpath("//a[contains(text(),'Регистрация') and @role='menuitem']");
-    private By buttonJoin = By.xpath("//a[@class='s-btn s-btn__primary']");
-    private By buttonAsk = By.xpath("//a[@class='ws-nowrap s-btn s-btn__primary']");
-    private By navigationLinks = By.xpath("//ol[contains(@class,'nav-links')]");
-    private By acceptCookies = By.xpath("//button[contains(@class,'js-accept-cookies')]");
+    private final By logo = By.xpath("//span[@class='-img _glyph']");
+    private final By search = By.xpath("//input[@placeholder='Поиск...']");
+    private final By buttonLogin = By.xpath("//a[contains(text(),'Войти') and @role='menuitem']");
+    private final By buttonSignUp = By.xpath("//a[contains(text(),'Регистрация') and @role='menuitem']");
+    private final By buttonJoin = By.xpath("//a[@class='s-btn s-btn__primary']");
+    private final By buttonAsk = By.xpath("//a[@class='ws-nowrap s-btn s-btn__primary']");
+    private final By navigationLinks = By.xpath("//ol[contains(@class,'nav-links')]");
+
+    public void acceptCookies(){
+        CookiesModule cookies = new CookiesModule(driver);
+        cookies.clickAcceptCookies();
+    }
 
     public MainPage searchLogo(){
         driver.findElements(logo);
@@ -26,12 +30,6 @@ public class MainPage {
 
     public MainPage searchNavigationMenu(){
         driver.findElements(navigationLinks);
-        return this;
-    }
-
-    public MainPage clickAcceptCookies(){
-        driver.findElement(acceptCookies).click();
-        System.out.println("Кукки были приняты");
         return this;
     }
 
