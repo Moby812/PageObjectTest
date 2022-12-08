@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class LoginPageTest {
     private WebDriver driver;
     private LoginPage loginPage;
+    private SignUpPage signUpPage;
 
     @BeforeEach
     public void setUp() {
@@ -13,6 +14,7 @@ public class LoginPageTest {
         driver = Options.createChromeDriver();
         driver.get("https://ru.stackoverflow.com/users/login");
         loginPage = new LoginPage(driver);
+        signUpPage = new SignUpPage(driver);
         loginPage.cookies().clickAcceptCookies();
     }
 
@@ -43,6 +45,13 @@ public class LoginPageTest {
     public void openSiteWrongField() {
         loginPage.wrongLogin("88005553535","2931");
         Assertions.assertEquals("Указанный адрес не является действительным адресом электронной почты.",loginPage.email().getErrorEmailPasswordText());
+    }
+
+    @Test
+    @DisplayName("Переход на другую форму через кнопку: 'Зарегистрируйтесь'")
+    public void openSingUp() {
+        loginPage.clickReg();
+        Assertions.assertEquals("Регистрация",signUpPage.getRegText());
     }
 
     @AfterEach
