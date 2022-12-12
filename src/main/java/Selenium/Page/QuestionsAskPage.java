@@ -1,4 +1,4 @@
-package Page;
+package Selenium.Page;
 
 import org.openqa.selenium.WebDriver;
 
