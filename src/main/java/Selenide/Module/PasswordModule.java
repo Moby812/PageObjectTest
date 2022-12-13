@@ -1,8 +1,6 @@
 package Selenide.Module;
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import static com.codeborne.selenide.Selenide.$x;
 

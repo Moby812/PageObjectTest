@@ -27,6 +27,9 @@ public class LoginPage {
         return new SignUpPage();
     }
 
+    /**
+     * Метод заполняет email и password, возвращает экземпляр LoginPage
+     */
     public LoginPage wrongLogin(String email, String password){
         EmailModule.sendEmail(email);
         PasswordModule.sendPass(password);
@@ -34,6 +37,9 @@ public class LoginPage {
         return this;
     }
 
+    /**
+     * Метод заполняет email и password, возвращает экземпляр MainPage
+     */
     public MainPage login(String email, String password){
         EmailModule.sendEmail(email);
         PasswordModule.sendPass(password);
@@ -41,10 +47,16 @@ public class LoginPage {
         return new MainPage();
     }
 
+    /**
+     * Получает текст ссылки "Войти"
+     */
     public String getLoginText(){
         return loginMessage.getText();
     }
 
+    /**
+     * Получает текст ссылки "Забыли пароль?"
+     */
     public String getForgotPasswordText(){
         return forgotPass.getText();
     }
