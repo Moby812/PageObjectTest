@@ -1,7 +1,4 @@
-package Selenium;
-
-import Selenium.Options;
-import Selenium.Page.*;
+import Page.*;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 

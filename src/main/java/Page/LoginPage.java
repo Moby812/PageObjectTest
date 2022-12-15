@@ -1,8 +1,8 @@
-package Selenium.Page;
+package Page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import Selenium.Module.*;
+import Module.*;
 
 public class LoginPage {
 
