@@ -1,4 +1,4 @@
-package Selenide.Page;
+package Page;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;

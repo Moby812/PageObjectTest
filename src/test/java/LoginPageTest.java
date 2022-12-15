@@ -1,9 +1,7 @@
-package Selenide;
-
-import Selenide.Module.CookiesModule;
-import Selenide.Module.EmailModule;
-import Selenide.Module.PasswordModule;
-import Selenide.Page.LoginPage;
+import Module.CookiesModule;
+import Module.EmailModule;
+import Module.PasswordModule;
+import Page.LoginPage;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.*;
 

@@ -1,8 +1,8 @@
-package Selenide.Page;
+package Page;
 
-import Selenide.Module.EmailModule;
-import Selenide.Module.PasswordModule;
-import Selenide.Module.ProviderButtonModule;
+import Module.EmailModule;
+import Module.PasswordModule;
+import Module.ProviderButtonModule;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;

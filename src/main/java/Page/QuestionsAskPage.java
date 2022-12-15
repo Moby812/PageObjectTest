@@ -1,4 +1,4 @@
-package Selenide.Page;
+package Page;
 
 public class QuestionsAskPage {
 

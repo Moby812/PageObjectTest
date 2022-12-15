@@ -1,7 +1,5 @@
-package Selenide;
-
-import Selenide.Module.CookiesModule;
-import Selenide.Page.MainPage;
+import Module.CookiesModule;
+import Page.MainPage;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.*;
 
