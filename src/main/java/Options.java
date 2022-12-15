@@ -14,10 +14,10 @@ public class Options {
     public static WebDriver createChromeDriver(){
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        options.addArguments("--whitelisted-ips");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-extensions");
+//        options.addArguments("--headless");
+//        options.addArguments("--whitelisted-ips");
+//        options.addArguments("--no-sandbox");
+//        options.addArguments("--disable-extensions");
 
         WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
