@@ -27,13 +27,12 @@ public class MainPage {
         return new CookiesModule(driver);
     }
 
-    public MainPage searchLogo(){
-        driver.findElements(logo);
-        return this;
+    public WebElement searchLogo(){
+        return driver.findElement(logo);
     }
 
     public MainPage searchNavigationMenu(){
-        driver.findElements(navigationLinks);
+        driver.findElement(navigationLinks);
         return this;
     }
 
