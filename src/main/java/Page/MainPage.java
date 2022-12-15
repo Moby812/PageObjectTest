@@ -7,7 +7,8 @@ import org.openqa.selenium.WebElement;
 import Module.*;
 
 public class MainPage {
-    private final WebDriver driver;
+
+    WebDriver driver;
 
     public MainPage(WebDriver driver){
         this.driver = driver;
