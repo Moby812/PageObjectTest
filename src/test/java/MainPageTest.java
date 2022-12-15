@@ -10,7 +10,7 @@ public class MainPageTest {
     public void setUp() {
         Options.propertyDriver();
         driver = Options.createChromeDriver();
-        driver.get("https://ru.stackoverflow.com/home");
+        driver.get("https://ru.stackoverflow.com");
         mainPage = new MainPage(driver);
         mainPage.cookies().clickAcceptCookies();
     }
@@ -18,7 +18,6 @@ public class MainPageTest {
     @Test
     @DisplayName("Загрузка главной страницы")
     public void openSite() {
-
         Assertions.assertNotNull(mainPage.searchLogo());
         Assertions.assertNotNull(mainPage.searchNavigationMenu());
     }
@@ -26,25 +25,19 @@ public class MainPageTest {
     @Test
     @DisplayName("Переход на форму входа, кнопкой 'войти'")
     public void singIn(){
-        LoginPage loginPage = mainPage.clickLogin();
-        String textButton = loginPage.getLoginText();
-        Assertions.assertEquals("Войти",textButton);
+        Assertions.assertEquals("Войти",mainPage.clickLogin().getLoginText());
     }
 
     @Test
     @DisplayName("Переход на форму регистрации, кнопкой 'Регистрация'")
     public void singUp(){
-        SignUpPage signUpPage = mainPage.clickSignUp();
-        String textButton = signUpPage.getRegText();
-        Assertions.assertEquals("Регистрация",textButton);
+        Assertions.assertEquals("Регистрация",mainPage.clickSignUp().getRegText());
     }
 
     @Test
     @DisplayName("Переход на форму регистрации, кнопкой 'Присоединиться к сообществу'")
     public void singUpJoin(){
-        SignUpPage signUpPage = mainPage.clickJoin();
-        String textButton = signUpPage.getRegText();
-        Assertions.assertEquals("Регистрация",textButton);
+        Assertions.assertEquals("Регистрация",mainPage.clickJoin().getRegText());
     }
 
     @AfterEach
