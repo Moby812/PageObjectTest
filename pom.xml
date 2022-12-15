@@ -17,6 +17,7 @@
         <junit.platform.version>1.9.0</junit.platform.version>
         <aspectj.version>1.8.10</aspectj.version>
         <allure.version>2.13.1</allure.version>
+        <seleniumhq.selenium>4.7.2</seleniumhq.selenium>
     </properties>
 
     <dependencies>
@@ -35,7 +36,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-chrome-driver</artifactId>
-            <version>4.7.1</version>
+            <version>${seleniumhq.selenium}</version>
         </dependency>
         <dependency>
             <groupId>com.codeborne</groupId>
@@ -45,7 +46,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
-            <version>4.7.1</version>
+            <version>${seleniumhq.selenium}</version>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
