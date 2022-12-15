@@ -10,7 +10,7 @@ public class MainPageTest {
     public void setUp() {
         Options.propertyDriver();
         driver = Options.createChromeDriver();
-        driver.get("https://ru.stackoverflow.com");
+        driver.get("https://ru.stackoverflow.com/home");
         mainPage = new MainPage(driver);
         mainPage.cookies().clickAcceptCookies();
     }
