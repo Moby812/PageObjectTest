@@ -18,23 +18,23 @@ public class ProviderButtonModule {
 
 
     public ProviderButtonModule google(){
-        driver.findElements(google);
+        driver.findElement(google);
         return this;
     }
     public ProviderButtonModule github(){
-        driver.findElements(github);
+        driver.findElement(github);
         return this;
     }
     public ProviderButtonModule facebook(){
-        driver.findElements(facebook);
+        driver.findElement(facebook);
         return this;
     }
     public ProviderButtonModule vk(){
-        driver.findElements(vk);
+        driver.findElement(vk);
         return this;
     }
     public ProviderButtonModule yandex(){
-        driver.findElements(yandex);
+        driver.findElement(yandex);
         return this;
     }
 

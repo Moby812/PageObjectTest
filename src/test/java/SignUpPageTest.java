@@ -1,7 +1,9 @@
 import Page.*;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 
+@Owner("Парамонов Павел")
 public class SignUpPageTest {
     private WebDriver driver;
     private SignUpPage signUpPage;

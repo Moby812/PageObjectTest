@@ -1,14 +1,18 @@
 import Page.*;
+import AssertsSteps.LoginPageStep;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 
-
-public class LoginPageTest {
+@Owner("Парамонов Павел")
+public class LoginPageTest extends LoginPageStep {
     private WebDriver driver;
     private LoginPage loginPage;
     private SignUpPage signUpPage;
 
     @BeforeEach
+    @Step("Создание драйвера и открытие начальной страницы")
     public void setUp() {
         Options.propertyDriver();
         driver = Options.createChromeDriver();
@@ -21,40 +25,41 @@ public class LoginPageTest {
     @Test
     @DisplayName("Загрузка страницы 'Войти'")
     public void openSite() {
-        Assertions.assertNotNull(loginPage.providerButton().google());
-        Assertions.assertNotNull(loginPage.providerButton().github());
-        Assertions.assertNotNull(loginPage.providerButton().facebook());
-        Assertions.assertNotNull(loginPage.providerButton().vk());
-        Assertions.assertNotNull(loginPage.providerButton().yandex());
-        Assertions.assertNotNull(loginPage.email().emailField());
-        Assertions.assertNotNull(loginPage.pass().passField());
-        Assertions.assertEquals("Забыли пароль?",loginPage.getForgotPasswordText());
-        Assertions.assertEquals("Войти",loginPage.getLoginText());
+        assertNotNull(loginPage.providerButton().google(),"google");
+        assertNotNull(loginPage.providerButton().github(),"github");
+        assertNotNull(loginPage.providerButton().facebook(),"facebook");
+        assertNotNull(loginPage.providerButton().vk(),"vk");
+        assertNotNull(loginPage.providerButton().yandex(),"yandex");
+        assertNotNull(loginPage.email().emailField());
+        assertNotNull(loginPage.pass().passField());
+        assertEquals("Забыли пароль?",loginPage.getForgotPasswordText());
+        assertEquals("Войти",loginPage.getLoginText());
     }
 
     @Test
     @DisplayName("'Войти' без заполнения полей")
     public void openSiteEmptyField() {
         loginPage.clickSubmit();
-        Assertions.assertEquals("Поле ввода почты не может быть пустым.",loginPage.email().getErrorEmailText());
-        Assertions.assertEquals("Поле ввода пароля не может быть пустым.",loginPage.pass().getErrorPasswordText());
+        assertEquals("Поле ввода почты не может быть пустым.",loginPage.email().getErrorEmailText());
+        assertEquals("Поле ввода пароля не может быть пустым.",loginPage.pass().getErrorPasswordText());
     }
 
     @Test
     @DisplayName("'Войти' при неправильном формате почты")
     public void openSiteWrongField() {
         loginPage.wrongLogin("88005553535","2931");
-        Assertions.assertEquals("Указанный адрес не является действительным адресом электронной почты.",loginPage.email().getErrorEmailPasswordText());
+        assertEquals("Указанный адрес не является действительным адресом электронной почты.",loginPage.email().getErrorEmailPasswordText());
     }
 
     @Test
     @DisplayName("Переход на другую форму через кнопку: 'Зарегистрируйтесь'")
     public void openSingUp() {
         loginPage.clickReg();
-        Assertions.assertEquals("Регистрация",signUpPage.getRegText());
+        assertEquals("Регистрация",signUpPage.getRegText());
     }
 
     @AfterEach
+    @Step("Закрытие экземпляра драйвера")
     public void tearDown() {
         driver.quit();
     }

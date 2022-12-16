@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -7,8 +8,8 @@ import java.time.Duration;
 public class Options {
 
     public static void propertyDriver() {
-//        System.setProperty("webdriver.chrome.driver", ".//drivers/chromedriver.exe");   //win
-        System.setProperty("webdriver.chrome.driver", ".//drivers/chromedriver");       //linux
+        System.setProperty("webdriver.chrome.driver", ".//drivers/chromedriver.exe");   //win
+//        System.setProperty("webdriver.chrome.driver", ".//drivers/chromedriver");       //linux
     }
 
     public static WebDriver createChromeDriver(){

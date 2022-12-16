@@ -1,5 +1,6 @@
 package Page;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import Module.*;
@@ -36,16 +37,19 @@ public class LoginPage {
         return new PasswordModule(driver);
     }
 
+    @Step
     public void clickSubmit(){
         driver.findElement(buttonSubmit).click();
         new MainPage(driver);
     }
 
+    @Step
     public SignUpPage clickReg(){
         driver.findElement(reg).click();
         return new SignUpPage(driver);
     }
 
+    @Step("Введён неверный email и пароль")
     public LoginPage wrongLogin(String email, String password){
         new EmailModule(driver).sendEmail(email);
         new PasswordModule(driver).sendPass(password);
@@ -53,6 +57,7 @@ public class LoginPage {
         return new LoginPage(driver);
     }
 
+    @Step("Вход на сайт")
     public MainPage login(String email, String password){
         new EmailModule(driver).sendEmail(email);
         new PasswordModule(driver).sendPass(password);
