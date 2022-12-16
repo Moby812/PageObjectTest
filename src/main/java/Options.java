@@ -20,7 +20,7 @@ public class Options {
         options.addArguments("--disable-extensions");
 
         WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(120));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(600));
 //        driver.manage().window().maximize();
         return driver;
     }
