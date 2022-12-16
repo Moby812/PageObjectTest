@@ -1,5 +1,6 @@
 package Page;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import Module.*;
@@ -44,26 +45,31 @@ public class SignUpPage {
         return new PasswordModule(driver);
     }
 
+    @Step
     public SignUpPage sendLogin(String text){
         driver.findElement(login).sendKeys(text);
         return this;
     }
 
+    @Step
     public SignUpPage pressCheckbox(){
         driver.findElement(sCheckbox).click();
         return this;
     }
 
+    @Step
     public SignUpPage pressLoginButton(){
         driver.findElement(loginButton).click();
         return this;
     }
 
+    @Step
     public MainPage clickSubmit(){
         driver.findElement(submit).click();
         return new MainPage(driver);
     }
 
+    @Step("Регистрация: {login}, {email}, {password}")
     public MainPage register(String login, String email, String password){
         this.sendLogin(login);
         new EmailModule(driver).sendEmail(email);

@@ -1,10 +1,10 @@
-package AssertsSteps;
+package Page;
 
 import Module.*;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.*;
 
-abstract public class LoginPageStep{
+abstract public class BaseAssertStep {
 
     @Step("Проверка доступности социальной кнопки: {buttonName}")
     public void assertNotNull(ProviderButtonModule providerButton, String buttonName) {

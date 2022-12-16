@@ -1,12 +1,15 @@
 import Page.*;
-import AssertsSteps.LoginPageStep;
+import Page.BaseAssertStep;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 @Owner("Парамонов Павел")
-public class LoginPageTest extends LoginPageStep {
+public class LoginPageTest extends BaseAssertStep {
     private WebDriver driver;
     private LoginPage loginPage;
     private SignUpPage signUpPage;
@@ -61,6 +64,9 @@ public class LoginPageTest extends LoginPageStep {
     @AfterEach
     @Step("Закрытие экземпляра драйвера")
     public void tearDown() {
+        Allure.getLifecycle().addAttachment(
+                "screenshot", "/image/jpeg","jpeg",
+                ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
         driver.quit();
     }
 

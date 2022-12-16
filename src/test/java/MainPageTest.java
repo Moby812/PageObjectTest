@@ -1,5 +1,5 @@
 import Page.*;
-import AssertsSteps.LoginPageStep;
+import Page.BaseAssertStep;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.*;
@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 @Owner("Парамонов Павел")
 @Disabled
-public class MainPageTest extends LoginPageStep {
+public class MainPageTest extends BaseAssertStep {
     private WebDriver driver;
     private MainPage mainPage;
 
