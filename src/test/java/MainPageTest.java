@@ -1,7 +1,12 @@
 import Page.*;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
+@Owner("Парамонов Павел")
 public class MainPageTest {
     private WebDriver driver;
     private MainPage mainPage;
@@ -16,6 +21,7 @@ public class MainPageTest {
     }
 
     @Test
+    @Disabled
     @DisplayName("Загрузка главной страницы")
     public void openSite() {
         Assertions.assertNotNull(mainPage.searchLogo());
@@ -35,6 +41,7 @@ public class MainPageTest {
     }
 
     @Test
+    @Disabled
     @DisplayName("Переход на форму регистрации, кнопкой 'Присоединиться к сообществу'")
     public void singUpJoin(){
         Assertions.assertEquals("Регистрация",mainPage.clickJoin().getRegText());
@@ -42,6 +49,10 @@ public class MainPageTest {
 
     @AfterEach
     public void tearDown() {
+        Allure.getLifecycle().addAttachment(
+                "screenshot", "/image/jpeg","jpeg",
+                ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
+        driver.close();
         driver.quit();
     }
 }
