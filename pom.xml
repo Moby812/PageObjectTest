@@ -16,7 +16,6 @@
         <junit.jupiter.version>5.9.0</junit.jupiter.version>
         <junit.platform.version>1.9.0</junit.platform.version>
         <aspectj.version>1.8.10</aspectj.version>
-        <allure.version>2.13.1</allure.version>
         <seleniumhq.selenium>4.7.2</seleniumhq.selenium>
     </properties>
 
@@ -42,6 +41,11 @@
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
             <version>6.10.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-selenide</artifactId>
+            <version>${qameta.allure.version}</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -113,8 +117,8 @@
                 <artifactId>allure-maven</artifactId>
                 <version>2.10.0</version>
                 <configuration>
-                    <reportVersion>${allure.version}</reportVersion>
-                    <allureDownloadUrl>https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${allure.version}/allure-commandline-${allure.version}.zip</allureDownloadUrl>
+                    <reportVersion>${qameta.allure.version}</reportVersion>
+                    <allureDownloadUrl>https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${qameta.allure.version}/allure-commandline-$${qameta.allure.version}.zip</allureDownloadUrl>
                 </configuration>
             </plugin>
         </plugins>
