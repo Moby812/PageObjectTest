@@ -11,19 +11,20 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <qameta.allure.version>2.13.1</qameta.allure.version>
+        <qameta.allure.version>2.20.0</qameta.allure.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.jupiter.version>5.9.0</junit.jupiter.version>
         <junit.platform.version>1.9.0</junit.platform.version>
-        <aspectj.version>1.8.10</aspectj.version>
+        <aspectj.version>1.9.9.1</aspectj.version>
         <seleniumhq.selenium>4.7.2</seleniumhq.selenium>
+        <maven.resources.plugin>3.3.0</maven.resources.plugin>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.7.1</version>
+            <version>${seleniumhq.selenium}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -80,6 +81,11 @@
             <version>${qameta.allure.version}</version>
             <type>pom</type>
         </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>${maven.resources.plugin}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -120,6 +126,32 @@
                     <reportVersion>${qameta.allure.version}</reportVersion>
                     <allureDownloadUrl>https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${qameta.allure.version}/allure-commandline-$${qameta.allure.version}.zip</allureDownloadUrl>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven.resources.plugin}</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>
+                                ${basedir}/target/allure-results
+                            </outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <includes>
+                                        <include>environment.properties</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

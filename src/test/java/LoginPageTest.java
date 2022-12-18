@@ -3,9 +3,10 @@ import Module.EmailModule;
 import Module.PasswordModule;
 import Page.LoginPage;
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.*;
 
-
+@Owner("Paramonov Pavel")
 public class LoginPageTest extends BaseTest{
     private final String url = "https://ru.stackoverflow.com/users/login";
     private LoginPage loginPage;

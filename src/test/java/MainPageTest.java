@@ -1,8 +1,10 @@
 import Module.CookiesModule;
 import Page.MainPage;
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.*;
 
+@Owner("Paramonov Pavel")
 public class MainPageTest extends BaseTest{
     private final String url = "https://ru.stackoverflow.com/";
     private MainPage mainPage;

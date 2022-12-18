@@ -3,8 +3,10 @@ import Module.EmailModule;
 import Module.PasswordModule;
 import Page.SignUpPage;
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.*;
 
+@Owner("Paramonov Pavel")
 public class SignUpPageTest extends BaseTest{
     private final String url = "https://ru.stackoverflow.com/users/signup";
     private SignUpPage signUpPage;
