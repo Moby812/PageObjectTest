@@ -134,7 +134,7 @@
                         </goals>
                         <configuration>
                             <outputDirectory>
-                                ${basedir}/target/allure-results
+                                ${basedir}/allure-results
                             </outputDirectory>
                             <resources>
                                 <resource>
